@@ -41,7 +41,20 @@ function App() {
       <button onClick={handleClick}>Populate books variable</button>
       <button onClick={() => setBooks(undefined)}>Remove books variable</button>
 
-      {/* Write your code here */}
+      {books ? (
+        books.map((book) => (
+          <div className="card" key={book.id}>
+            <img src={book.cover} className="card-image" alt={book.title} />
+            <div>
+              <h3 className="card-title">{book.title}</h3>
+              <p className="card-authors">{book.authors.join(", ")}</p>
+              <p className="card-editorial">{book.editorial}</p>
+            </div>
+          </div>
+        ))
+      ) : (
+        <p>No hay libros para mostrar</p>
+      )}
     </>
   );
 }
